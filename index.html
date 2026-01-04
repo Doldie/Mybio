@@ -1139,18 +1139,13 @@ document.body.style.overflowX = 'hidden';
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    // Código de busca do Avatar via Cloudflare Proxy
-// Substitua o link dentro do fetch pelo seu link oficial
-fetch('https://avatar-proxy.doldiemaaan123.workers.dev') // <--- Use o link .workers.dev aqui
-  .then(r => r.json())
-  .then(d => {
-    if (d.avatar_decoration_data && d.avatar_decoration_data.asset) {
-      const deco = document.getElementById('avatar-decoration');
-      deco.src = `https://cdn.discordapp.com/avatar-decoration-presets/${d.avatar_decoration_data.asset}.png`;
-      deco.style.display = 'block';
-    }
-  })
-  .catch(err => console.error("Erro no proxy:", err));
+ // Avatar decoration via CDN (SEM API, SEM FETCH)
+const decorationUrl =
+  "https://cdn.discordapp.com/avatar-decoration-presets/a_be111e4303d634c55500202a61656e0b.png?size=512";
+
+const deco = document.getElementById("avatar-decoration");
+deco.src = decorationUrl;
+deco.style.display = "block";
 
     
   </script>

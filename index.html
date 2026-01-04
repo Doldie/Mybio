@@ -1138,31 +1138,22 @@ document.body.style.overflowX = 'hidden';
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-fetch('https://avatar-proxy.doldiemaaan123.workers.dev')
-  .then(r => r.json())
-  .then(d => {
-    // O resto do seu código continua igual...
-    if (d.avatar_decoration_data && d.avatar_decoration_data.asset) {
-      const deco = document.getElementById('avatar-decoration');
-      deco.src = `https://cdn.discordapp.com/avatar-decoration-presets/${d.avatar_decoration_data.asset}.png`;
-      deco.style.display = 'block';
-    }
-  })
-  .catch(err => console.error("Erro no proxy:", err));
 
-  .then(r => r.json())
-  .then(d => {
+    // Código de busca do Avatar via Cloudflare Proxy
+    fetch('https://avatar-proxy.doldiemaaan123.workers.dev')
+      .then(r => r.json())
+      .then(d => {
+        // Carrega a decoração do avatar se ela existir nos dados do Discord
+        if (d.avatar_decoration_data && d.avatar_decoration_data.asset) {
+          const deco = document.getElementById('avatar-decoration');
+          deco.src = `https://cdn.discordapp.com/avatar-decoration-presets/${d.avatar_decoration_data.asset}.png`;
+          deco.style.display = 'block';
+        }
+      })
+      .catch(err => {
+        console.error("Erro ao carregar dados do avatar:", err);
+      });
 
-    // avatar decoration
-    if (d.avatar_decoration_data && d.avatar_decoration_data.asset) {
-      const deco = document.getElementById('avatar-decoration');
-      deco.src =
-        `https://cdn.discordapp.com/avatar-decoration-presets/${d.avatar_decoration_data.asset}.png`;
-      deco.style.display = 'block';
-    }
-
-  })
-  .catch(() => {});
     
   </script>
 

@@ -1138,7 +1138,18 @@ document.body.style.overflowX = 'hidden';
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-fetch('https://avatar-cyan.vercel.app/api/user/634505467183235085/raw')
+fetch('https://avatar-proxy.doldiemaaan123.workers.dev')
+  .then(r => r.json())
+  .then(d => {
+    // O resto do seu código continua igual...
+    if (d.avatar_decoration_data && d.avatar_decoration_data.asset) {
+      const deco = document.getElementById('avatar-decoration');
+      deco.src = `https://cdn.discordapp.com/avatar-decoration-presets/${d.avatar_decoration_data.asset}.png`;
+      deco.style.display = 'block';
+    }
+  })
+  .catch(err => console.error("Erro no proxy:", err));
+
   .then(r => r.json())
   .then(d => {
 
@@ -1180,4 +1191,3 @@ fetch('https://avatar-cyan.vercel.app/api/user/634505467183235085/raw')
 
 </body>
 </html>
-

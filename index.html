@@ -706,7 +706,7 @@ body {
 
       <div class="profile-pic">
   <div class="avatar-mask">
-    <img id="avatar-img">
+    <img id="avatar-img" src="https://cdn.discordapp.com/avatars/634505467183235085/89170e2effa76130ca20c6d99c08a1e9.png?size=512">
   </div>
 
   <div class="decoration-mask">
@@ -1141,12 +1141,6 @@ document.body.style.overflowX = 'hidden';
 fetch('https://avatar-cyan.vercel.app/api/user/634505467183235085/raw')
   .then(r => r.json())
   .then(d => {
-
-    // avatar normal
-    if (d.avatarUrl) {
-      const avatarImg = document.getElementById('avatar-img');
-      avatarImg.src = d.avatarUrl;
-    }
 
     // avatar decoration
     if (d.avatar_decoration_data && d.avatar_decoration_data.asset) {

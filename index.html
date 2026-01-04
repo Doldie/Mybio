@@ -569,20 +569,21 @@ body {
         container.appendChild(div);
       });
       }
-    }
 
  // Avatar decoration via CDN (SEM API, SEM FETCH)
 const decorationUrl =
   "https://cdn.discordapp.com/avatar-decoration-presets/a_be111e4303d634c55500202a61656e0b.png?size=512";
 
-const deco = document.getElementById("avatar-decoration");
-    deco.src = decorationUrl;
-deco.style.display = "block";
-deco.onerror = () => {
-  deco.style.display = "none";
-};
-deco.src = decorationUrl;
-deco.style.display = "block";
+document.addEventListener("DOMContentLoaded", () => {
+  const deco = document.getElementById("avatar-decoration");
+  if (!deco) return;
+
+  deco.src = decorationUrl;
+  deco.style.display = "block";
+  deco.onerror = () => {
+    deco.style.display = "none";
+  };
+});
 
     
   </script>

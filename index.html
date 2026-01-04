@@ -600,7 +600,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   btn.addEventListener("click", () => {
     if (music.paused) {
-      music.play().catch(() => {});
+      music.currentTime = 0;
+music.play();.catch(() => {});
       btn.textContent = "Playing";
       btn.classList.add("playing");
     } else {
